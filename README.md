@@ -1,8 +1,8 @@
-# FormMaster
+# FormXpress (npm: jquery-formxpress)
 
 Universal jQuery Auto-Validation & Smart-Upload Plugin.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) ![npm](https://img.shields.io/npm/v/form-master) ![Downloads](https://img.shields.io/npm/dt/form-master)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) ![npm](https://img.shields.io/npm/v/jquery-formxpress) ![Downloads](https://img.shields.io/npm/dt/jquery-formxpress)
 
 ## Features
 
@@ -19,7 +19,7 @@ Universal jQuery Auto-Validation & Smart-Upload Plugin.
 ## Installation
 
 ```bash
-npm install form-master
+npm install jquery-formxpress
 ```
 
 Add jQuery (peer dependency) if not already installed:
@@ -32,13 +32,13 @@ npm install jquery
 
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./node_modules/form-master/dist/form-master.min.js"></script>
+<script src="./node_modules/jquery-formxpress/dist/form-master.min.js"></script>
 <script>
-  $("#myForm").FormMaster({
+  $("#myForm").FormXpress({
     successMessage: "Sent!",
     onSuccess: function (res, form) {
       alert("Success");
-      form.data("FormMaster").reset();
+      form.data("FormXpress").reset();
     },
   });
 </script>
@@ -51,9 +51,9 @@ You can use jsDelivr or unpkg once published:
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Latest version (replace 1.0.0 with desired or omit for latest) -->
-<script src="https://cdn.jsdelivr.net/npm/form-master@1.0.0/dist/form-master.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-formxpress@1.0.0/dist/form-master.min.js"></script>
 <!-- OR -->
-<script src="https://unpkg.com/form-master@1.0.0/dist/form-master.min.js"></script>
+<script src="https://unpkg.com/jquery-formxpress@1.0.0/dist/form-master.min.js"></script>
 ```
 
 After publishing new versions, CDN caches may take a short time to refresh. Append `?v=1.0.1` for cache-busting if needed.
@@ -68,10 +68,10 @@ After publishing new versions, CDN caches may take a short time to refresh. Appe
   <button type="submit">Send</button>
 </form>
 <script>
-  $("#contactForm").FormMaster({
+  $("#contactForm").FormXpress({
     onSuccess: function (resp, form) {
       alert("Message sent");
-      form.data("FormMaster").reset();
+      form.data("FormXpress").reset();
     },
   });
 </script>
@@ -80,7 +80,7 @@ After publishing new versions, CDN caches may take a short time to refresh. Appe
 ## Options
 
 ```ts
-interface FormMasterOptions {
+interface FormXpressOptions {
   submitButton?: string | null;
   errorClass?: string;
   errorSpanClass?: string;
@@ -109,7 +109,7 @@ interface FormMasterOptions {
 ## Public Methods
 
 ```js
-const fm = $("#myForm").data("FormMaster");
+const fm = $("#myForm").data("FormXpress");
 fm.validate(); // returns boolean
 fm.reset(); // resets form + clears previews
 fm.clearErrors(); // removes error classes & spans
@@ -137,8 +137,8 @@ Distributed files:
 4. Commit changes & push.
 5. Create a git tag: `git tag v1.0.1 && git push origin v1.0.1`.
 6. Create a GitHub Release from that tag (the GitHub Action will run and publish to npm automatically using `NPM_TOKEN`).
-7. Verify on npm: `https://www.npmjs.com/package/form-master`.
-8. CDN links will reflect the new version (e.g. `form-master@1.0.1`).
+7. Verify on npm: `https://www.npmjs.com/package/jquery-formxpress`.
+8. CDN links will reflect the new version (e.g. `jquery-formxpress@1.0.1`).
 
 ### Manual Publish (Alternative)
 

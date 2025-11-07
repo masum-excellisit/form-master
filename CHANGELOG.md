@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial public release of FormMaster.
+- Initial public release of FormXpress.
 - jQuery validation + multi-file upload with previews and progress.
 - Custom validation hooks and public instance methods.
 - Basic TypeScript declaration file.

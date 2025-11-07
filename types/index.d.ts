@@ -1,10 +1,10 @@
-// Type definitions for form-master 1.0.0
-// Project: https://github.com/masum-excellisit/form-master
+// Type definitions for jquery-formxpress
+// Project: https://github.com/masum-excellisit/jquery-formxpress
 // Definitions by: Masum
 
 /// <reference types="jquery" />
 
-export interface FormMasterMessages {
+export interface FormXpressMessages {
   required?: string;
   email?: string;
   url?: string;
@@ -20,7 +20,7 @@ export interface FormMasterMessages {
   [key: string]: string | undefined;
 }
 
-export interface FormMasterOptions {
+export interface FormXpressOptions {
   submitButton?: string | null;
   errorClass?: string;
   errorSpanClass?: string;
@@ -44,10 +44,10 @@ export interface FormMasterOptions {
   onProgress?: (percent: number, form: JQuery) => void;
 
   // Messages
-  messages?: FormMasterMessages;
+  messages?: FormXpressMessages;
 }
 
-export interface FormMasterInstance {
+export interface FormXpressInstance {
   reset: () => void;
   validate: () => boolean;
   clearErrors: () => void;
@@ -55,7 +55,7 @@ export interface FormMasterInstance {
 
 declare global {
   interface JQuery {
-    FormMaster(options?: FormMasterOptions): JQuery;
+    FormXpress(options?: FormXpressOptions): JQuery;
   }
 }
 

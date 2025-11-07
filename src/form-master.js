@@ -1,10 +1,10 @@
 /*!
- * FormMaster v1.0
+ * FormXpress
  * Universal jQuery Auto-Validation & Smart-Upload Plugin
  * Author: Masum
  */
 (function ($) {
-  $.fn.FormMaster = function (options) {
+  $.fn.FormXpress = function (options) {
     const settings = $.extend(
       {
         submitButton: null,
@@ -49,9 +49,9 @@
     );
 
     /* ---------- Inject Recommended CSS once ---------- */
-    if (!$("#FormMasterCSS").length) {
+    if (!$("#FormXpressCSS").length) {
       $("head").append(`
-                <style id="FormMasterCSS">
+                <style id="FormXpressCSS">
                     .${settings.errorClass} {
                         border-color:#e74c3c!important;outline:none;
                     }
@@ -452,7 +452,7 @@
       });
 
       // Public methods via data
-      form.data("FormMaster", {
+      form.data("FormXpress", {
         reset: function () {
           form[0].reset();
           form.find(`.${settings.errorClass}`).removeClass(settings.errorClass);

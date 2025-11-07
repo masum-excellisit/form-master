@@ -1,7 +1,7 @@
 {
-  "name": "form-master",
+  "name": "jquery-formxpress",
   "version": "1.0.3",
-  "description": "Universal jQuery Auto-Validation & Smart-Upload Plugin (FormMaster)",
+  "description": "Universal jQuery Auto-Validation & Smart-Upload Plugin (FormXpress)",
   "keywords": [
     "jquery",
     "form",
@@ -15,12 +15,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/masum-excellisit/form-master.git"
+    "url": "git+https://github.com/masum-excellisit/jquery-formxpress.git"
   },
   "bugs": {
-    "url": "https://github.com/masum-excellisit/form-master/issues"
+    "url": "https://github.com/masum-excellisit/jquery-formxpress/issues"
   },
-  "homepage": "https://github.com/masum-excellisit/form-master#readme",
+  "homepage": "https://github.com/masum-excellisit/jquery-formxpress#readme",
   "main": "dist/form-master.js",
   "types": "types/index.d.ts",
   "files": [
