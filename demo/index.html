@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormMaster Pro v3.0 - Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .example-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0072ff;
+        }
+        button {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .note {
+            background: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>FormMaster Pro v3.0 - Complete Examples</h1>
+
+    <!-- Example 1: Basic Contact Form -->
+    <div class="example-section">
+        <h2>1. Basic Contact Form</h2>
+        <form id="contactForm" action="/api/contact" method="POST">
+            <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="full_name" required minlength="3">
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="email_address" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone_number" pattern="[\d\s\-\+\(\)]+">
+            </div>
+            <div class="form-group">
+                <label>Message *</label>
+                <textarea name="message" required minlength="10" rows="4"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="note">
+            <strong>Features:</strong> Auto-validation, humanized field names, required fields
+        </div>
+    </div>
+
+    <!-- Example 2: File Upload with Multi-Select -->
+    <div class="example-section">
+        <h2>2. Multi-File Upload Form</h2>
+        <form id="uploadForm" action="/api/upload" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Project Name *</label>
+                <input type="text" name="project_name" required>
+            </div>
+            <div class="form-group">
+                <label>Upload Images (Max 5MB each) *</label>
+                <input type="file" name="project_images" multiple accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label>Upload Documents</label>
+                <input type="file" name="project_docs" multiple>
+            </div>
+            <button type="submit">Upload Files</button>
+        </form>
+        <div class="note">
+            <strong>Features:</strong> Multi-file preview, individual remove buttons, progress bars, file validation
+        </div>
+    </div>
+
+    <!-- Example 3: Registration with Custom Validation -->
+    <div class="example-section">
+        <h2>3. Registration Form with Custom Rules</h2>
+        <form id="registerForm" action="/api/register" method="POST">
+            <div class="form-group">
+                <label>Username *</label>
+                <input type="text" name="username" required minlength="4" maxlength="20">
+            </div>
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label>Password *</label>
+                <input type="password" name="password" id="password" required minlength="8">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password *</label>
+                <input type="password" name="confirm_password" required>
+            </div>
+            <div class="form-group">
+                <label>Age *</label>
+                <input type="number" name="age" min="18" max="100" required>
+            </div>
+            <div class="form-group">
+                <label>Website</label>
+                <input type="url" name="website">
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <div class="note">
+            <strong>Features:</strong> Password match validation, age range, URL validation
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../dist/form-master.min.js"></script>
+    <script>
+        // Example 1: Basic Contact Form
+        $('#contactForm').FormMaster({
+            successMessage: "Thank you! Your message has been sent.",
+            ajax: true,
+            onSuccess: function(response, form) {
+                alert('Success! Response: ' + JSON.stringify(response));
+                form.data('FormMaster').reset();
+            },
+            onError: function(xhr, form) {
+                alert('Error: ' + xhr.status);
+            }
+        });
+
+        // Example 2: Multi-File Upload
+        $('#uploadForm').FormMaster({
+            maxFileSize: 5242880, // 5MB
+            allowedFileTypes: ['image/*', 'application/pdf', 'application/msword'],
+            onProgress: function(percent, form) {
+                console.log('Upload progress: ' + percent.toFixed(2) + '%');
+            },
+            onSuccess: function(response, form) {
+                alert('Files uploaded successfully!');
+                form.data('FormMaster').reset();
+            },
+            messages: {
+                fileSize: "File is too large! Maximum {size}MB allowed",
+                fileType: "Only images, PDFs, and Word documents are allowed"
+            }
+        });
+
+        // Example 3: Registration with Custom Validation
+        $('#registerForm').FormMaster({
+            customRules: {
+                confirm_password: function(value, input) {
+                    const password = $('#password').val();
+                    if (value !== password) {
+                        return "Passwords do not match";
+                    }
+                    return null;
+                },
+                username: function(value, input) {
+                    if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+                        return "Only letters, numbers, and underscores allowed";
+                    }
+                    return null;
+                },
+                password: function(value, input) {
+                    if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
+                        return "Must contain uppercase, lowercase, and number";
+                    }
+                    return null;
+                }
+            },
+            beforeSubmit: function(form, formData) {
+                console.log('About to submit...');
+                return true; // return false to cancel submission
+            },
+            onSuccess: function(response, form) {
+                alert('Registration successful!');
+                window.location.href = '/dashboard';
+            },
+            resetAfterSubmit: false
+        });
+
+        // Programmatic usage examples
+        setTimeout(function() {
+            // Validate form programmatically
+            const isValid = $('#contactForm').data('FormMaster').validate();
+            console.log('Form is valid:', isValid);
+
+            // Reset form programmatically
+            // $('#contactForm').data('FormMaster').reset();
+
+            // Clear all errors
+            // $('#contactForm').data('FormMaster').clearErrors();
+        }, 1000);
+    </script>
+
+    <!-- Documentation Section -->
+    <div class="example-section">
+        <h2>📖 Complete Configuration Options</h2>
+        <pre><code>{
+    submitButton: null,              // Custom submit button selector
+    errorClass: "input-error",       // CSS class for invalid inputs
+    errorSpanClass: "error-text",    // CSS class for error messages
+    showNameError: true,             // Show field name in error
+    humanizeNames: true,             // Convert field_name to "Field Name"
+    ajax: true,                      // Enable AJAX submission
+    resetAfterSubmit: false,         // Auto-reset form after success
+    maxFileSize: 10485760,           // Max file size in bytes (10MB)
+    allowedFileTypes: [],            // ['image/*', 'application/pdf']
+
+    // Custom validation rules
+    customRules: {
+        fieldName: function(value, input) {
+            return null; // or error message
+        }
+    },
+
+    // Hooks
+    beforeValidate: function(form) {},
+    afterValidate: function(form, isValid) {},
+    beforeSubmit: function(form, formData) { return true; },
+    onSuccess: function(response, form) {},
+    onError: function(xhr, form) {},
+    onProgress: function(percent, form) {},
+
+    // Custom messages
+    messages: {
+        required: "This field is required",
+        email: "Please enter a valid email",
+        // ... all other messages
+    }
+}</code></pre>
+    </div>
+
+    <div class="example-section">
+        <h2>🔧 Public Methods</h2>
+        <pre><code>// Get FormMaster instance
+const fm = $('#myForm').data('FormMaster');
+
+// Validate form
+fm.validate();
+
+// Reset form
+fm.reset();
+
+// Clear all errors
+fm.clearErrors();</code></pre>
+    </div>
+</body>
+</html>
