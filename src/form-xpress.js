@@ -236,7 +236,7 @@
           preview.css("border-color", "#e74c3c");
           fileName
             .css("color", "#e74c3c")
-            .text(`❌ ${file.name} - ${fileError}`);
+            .text(`X ${file.name} - ${fileError}`);
         } else if (file.type.startsWith("image/")) {
           const img = $("<img>");
           const reader = new FileReader();
